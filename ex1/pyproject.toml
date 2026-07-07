@@ -1,0 +1,19 @@
+[project]
+name = "loading_progams"
+version = "0.1.0"
+description = "python module 08"
+authors = [
+    {name = "tny-onin"}
+]
+requires-python = ">=3.11"
+dependencies = [
+    "pandas (>=3.0.3,<4.0.0)",
+    "matplotlib (>=3.11.0,<4.0.0)",
+    "requests (>=2.34.2,<3.0.0)",
+    "numpy (==2.3.3)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

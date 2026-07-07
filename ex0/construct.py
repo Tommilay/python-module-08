@@ -1,19 +1,36 @@
+#!/usr/bin/env python3
+# ########################################################################### #
+#   shebang: 1                                                                #
+#                                                          :::      ::::::::  #
+#   construct.py                                         :+:      :+:    :+:  #
+#                                                      +:+ +:+         +:+    #
+#   By: tny-onin <tny-onin@student.42antananarivo.   +#+  +:+       +#+       #
+#                                                  +#+#+#+#+#+   +#+          #
+#   Created: 2026/07/04 11:18:36 by tny-onin            #+#    #+#            #
+#   Updated: 2026/07/04 11:21:09 by tny-onin           ###   ########.fr      #
+#                                                                             #
+# ########################################################################### #
+
+
 import sys
 import site
 
+
 def is_insystem() -> bool:
     return sys.prefix == sys.base_prefix
+
 
 def print_construct(
         status: str,
         current_path: str,
         venv: str,
         env_path: str
-        ):
+        ) -> None:
     print(f"\nMATRIX STATUS:{status}\n")
     print(f"Current Python: {current_path}")
     print(f"Virtual Environment: {venv}")
     print(f"{env_path}\n")
+
 
 def main() -> None:
     current_path = sys.executable
@@ -22,7 +39,7 @@ def main() -> None:
         env_name = "None detected"
         path_env_ = "\nWARNING: you're in the the globale environment!\
 The machines can see everything you install"
-    
+
         print_construct(status, current_path, env_name, path_env_)
 
         print("To enter the construct, run:")
@@ -34,8 +51,8 @@ The machines can see everything you install"
     else:
         status = "Welcom to the construct"
         path_env = sys.prefix
-        env_name = path_env.split("\\")
-        env_name = env_name[len(env_name) - 1]
+        env_name_list = path_env.split("\\")
+        env_name = env_name_list[len(env_name_list) - 1]
         path_env_ = f"Environment path: {path_env}"
 
         print_construct(status, current_path, env_name, path_env_)
@@ -47,7 +64,6 @@ The machines can see everything you install"
         print("Package installation path:")
         for path in site.getsitepackages():
             print(path if "site" in path else "", end="")
-
 
 
 if __name__ == "__main__":
